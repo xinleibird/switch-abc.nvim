@@ -2,7 +2,7 @@ local M = {}
 
 M.config = {
 	target_id = "com.apple.keylayout.ABC",
-	bin_path = debug.getinfo(1).source:match("@(.*/)") .. "../../bin/im-select-bin",
+	bin_path = debug.getinfo(1).source:match("@(.*/)") .. "../../bin/switch-abc-bin",
 }
 
 local last_key = ""
