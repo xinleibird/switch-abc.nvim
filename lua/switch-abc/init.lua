@@ -21,10 +21,17 @@ function M.setup(opts)
 
 	vim.api.nvim_create_autocmd("ModeChanged", {
 		pattern = "[icv]:n",
+		group = vim.api.nvim_create_augroup("switch_abc_mode_changed", { clear = true }),
 		callback = function()
 			if last_key ~= esc and last_key ~= c_brk then
 				vim.fn.jobstart({ M.config.bin_path, M.config.target_id })
 			end
+		end,
+	})
+	vim.api.nvim_create_autocmd("WinLeave", {
+		group = vim.api.nvim_create_augroup("switch_abc_win_leave", { clear = true }),
+		callback = function()
+			vim.fn.jobstart({ M.config.bin_path, M.config.target_id })
 		end,
 	})
 end
