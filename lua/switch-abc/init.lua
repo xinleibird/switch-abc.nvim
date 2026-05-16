@@ -28,7 +28,7 @@ function M.setup(opts)
 			end
 		end,
 	})
-	vim.api.nvim_create_autocmd("WinLeave", {
+	vim.api.nvim_create_autocmd({ "WinLeave", "FocusGained" }, {
 		group = vim.api.nvim_create_augroup("switch_abc_win_leave", { clear = true }),
 		callback = function()
 			vim.fn.jobstart({ M.config.bin_path, M.config.target_id })
